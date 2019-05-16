@@ -1,5 +1,7 @@
 import  React from "react";
 import {View, Button, StyleSheet, TextInput} from "react-native"
+import DefaultInput from "../UI/Customs/DefaultInput"
+import CustomButton from "../UI/Customs/CustomButton"
 
 class Input extends React.Component{
   state = {
@@ -20,60 +22,23 @@ class Input extends React.Component{
 
   render() {
     return (
-      <View style={styles.fullWidth} >
-        <TextInput
-          style={styles.input}
+      <View style={Styles.inputContainer}>
+        <DefaultInput
           onChangeText={ this.changeEmailEventHandler }
           placeholder="Email"
         />
-        <TextInput
-          style={styles.input}
+        <DefaultInput
           onChangeText={ this.changePasswordEventHandler }
           placeholder="Password"
         />
-
-        <View style={styles.containerButton}>
-          <Button
-            style={styles.submitBtn}
-            title="Let's Go"
-            color="#841584"
-            onPress={this.subitStateObjHandler}
-            accessibilityLabel="Learn more about this purple button"
-          />
+        <View style={Styles.containerButton}>
+          <CustomButton  onPress={this.subitStateObjHandler} color="skyblue" fontColor="#fff">
+            Submit
+          </CustomButton>
         </View>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  input: {
-    padding: 10,
-    width: "100%",
-    marginTop: 20,
-    color: "green",
-    textAlign: 'center',
-    borderColor: "blue",
-    borderWidth: 1
-  },
-
-  fullWidth: {
-    width: "100%"
-  },
-
-  submitBtn: {
-    marginTop: '10%'
-  },
-
-  extraMargin: {
-    marginTop: 10
-  },
-
-  containerButton: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    marginTop: 20
-  }
-})
 
 export default Input;

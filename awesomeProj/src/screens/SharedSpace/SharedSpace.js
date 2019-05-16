@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {addUser,deleteUser} from "../../store/actions"
 import niceplacetoronto from "../../assets/images/niceplacetoronto.png";
 import Input from "../../Components/Input/Input"
+import Styles from "../../assets/styles/styles"
 
 class SharedSpace extends React.Component {
   static navigatorButtons = {
@@ -27,7 +28,7 @@ class SharedSpace extends React.Component {
   }
   render = () => {
     return(
-      <View>
+      <View style={Styles.container}>
         <Input  btnPress={this.addUserProp}/>
       </View>
     )

@@ -1,7 +1,7 @@
 import { Navigation } from "react-native-navigation";
 import Icon from"react-native-vector-icons/Ionicons";
 
-const locationStack = (icon) => {
+const locationStack = (icons) => {
   return {
     children:[{
       component: {
@@ -15,16 +15,20 @@ const locationStack = (icon) => {
     options: {
       bottomTab: {
         text: 'Tab 3',
-        icon: icon,
+        icon: icons[2],
         testID: 'THIRD_TAB_BAR_BUTTON'
       },
       topBar: {
         visible: true,
         title: {
-          height: 70,
-          alignment: 'left',
-          text: "Info"
-        }
+          component: {
+            name: 'awesomeproject.SideDrawer',
+            passProps: {
+              title: "Info"
+            }
+          }
+        },
+        icon: icons[3]
       }
     }
   }
@@ -46,27 +50,7 @@ export default menuTabs = () => {
               passProps: {
                 text: 'This is a left side menu screen'
               }
-            },
-            options: {
-              navigatorButtons: {
-                leftButtons: [
-                  {
-                    id: 'buttonOne',
-                    icon: icons[3]
-                  }
-                ],
-                text: 'Side Bar',
-                icon: icons[3],
-                testID: 'FOUTH_TAB_BAR_BUTTON',
-                leftButtons: [
-                  {
-                    id: 'buttonOne',
-                    icon: icons[3]
-                  }
-                ]
-              }
             }
-
           },
           center: {
             bottomTabs: {
@@ -90,12 +74,11 @@ export default menuTabs = () => {
                     topBar: {
                       visible: true,
                       title: {
-                        // height: 70,
-                        // alignment: 'left',
-                        // text: "Login",
-                        // icon: icons[3]
                         component: {
-                          name: 'awesomeproject.SideDrawer'
+                          name: 'awesomeproject.SideDrawer',
+                          passProps: {
+                            title: "Home"
+                          }
                         }
                       },
                       icon: icons[3]
@@ -123,16 +106,20 @@ export default menuTabs = () => {
                     topBar: {
                       visible: true,
                       title: {
-                        height: 70,
-                        alignment: 'left',
-                        text: "Find User"
-                      }
+                        component: {
+                          name: 'awesomeproject.SideDrawer',
+                          passProps: {
+                            title: "Feed"
+                          }
+                        }
+                      },
+                      icon: icons[3]
                     }
                   }
                 }
               },
               {
-                stack: locationStack(icons[2])
+                stack: locationStack(icons)
               }]
             }
           },
